@@ -1,0 +1,482 @@
+/* ORIGINAL THEME VARIABLES */
+:root {
+  --dark-bg: #0B0D10;
+  --light-bg: #F8F9FB;
+  --text-dark: #0F172A;
+  --text-light: #FFFFFF;
+  --text-muted: #6B7280;
+  --accent-teal: #00E5D4;
+  --accent-cyan: #00C2FF;
+  --accent-gold: #D4AF37;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 30px;
+  background: rgba(11, 13, 16, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--accent-gold);
+}
+
+.nav-links a {
+  margin-left: 25px;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-teal);
+}
+
+/* GSAP SCROLL LAYOUT */
+.scroll-container {
+  position: relative;
+  width: 100%;
+}
+
+.panel {
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  background: var(--dark-bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title span {
+  color: var(--accent-gold);
+}
+
+/* -------------------------------------
+   HERO PINNED SEQUENCES
+----------------------------------------*/
+.pin-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--dark-bg);
+}
+
+.seq-1,
+.seq-2,
+.seq-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* --- SEQ 1: Initial full image, filled name, text --- */
+.seq-1 {
+  z-index: 10;
+  transform-origin: center center;
+}
+
+.hero-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text-layer {
+  z-index: 1;
+  flex-direction: column;
+}
+
+.hero-text-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filled-name {
+  font-family: var(--font-heading);
+  font-size: 10vw;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 4px;
+  color: var(--accent-gold);
+  /* FILLED INITIAL */
+}
+
+.seq-1-subtitle {
+  margin-top: 20px;
+  opacity: 1;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  color: var(--accent-teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-desc {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.hero-fg {
+  z-index: 2;
+  /* Removed align-items: flex-end to allow full height */
+}
+
+.profile-cutout {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- SEQ 2: New stroke name from offscreen, fills, text fades in --- */
+.seq-2 {
+  z-index: 20;
+  opacity: 0;
+  /* Hidden initially, GSAP brings it in */
+  pointer-events: none;
+}
+
+.stroke-name-svg {
+  width: 100vw;
+  height: 12vw;
+  /* Accommodate the 10vw font size */
+  overflow: visible;
+}
+
+.stroke-name-new {
+  font-family: var(--font-heading);
+  font-size: 10vw;
+  font-weight: 700;
+  letter-spacing: 4px;
+  fill: var(--dark-bg);
+  /* This perfectly hides the overlapping inner strokes! */
+  stroke: var(--accent-gold);
+  stroke-width: 4px;
+  /* With paint-order, 4px gives a clean 2px outward stroke */
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 1px rgba(212, 175, 55, 0.3));
+}
+
+.seq-2-subtitle {
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0;
+  /* Hidden initially */
+}
+
+/* --- SEQ 3: About Me Pinned --- */
+.seq-3 {
+  z-index: 30;
+  opacity: 0;
+  /* GSAP fades this in */
+  background: var(--dark-bg);
+}
+
+.about-content-pinned {
+  padding-top: 80px;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.about-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.skill-group {
+  background: rgba(0, 229, 212, 0.05);
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 3px solid var(--accent-teal);
+}
+
+.skill-group h3 {
+  color: var(--accent-teal);
+  margin-bottom: 15px;
+  font-family: var(--font-heading);
+}
+
+.skill-group ul {
+  list-style: none;
+  color: var(--text-muted);
+}
+
+.skill-group li {
+  padding: 8px 0;
+}
+
+.skill-group li:before {
+  content: "→ ";
+  color: var(--accent-gold);
+  margin-right: 8px;
+}
+
+
+/* -------------------------------------
+   SERVICES
+----------------------------------------*/
+.service-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.service-img {
+  width: 45%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.service-info {
+  width: 55%;
+  padding: 20px;
+}
+
+.service-info h3 {
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  color: var(--accent-teal);
+  margin-bottom: 10px;
+}
+
+.service-info p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.coming-soon {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 5px 15px;
+  background: var(--accent-gold);
+  color: #000;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* -------------------------------------
+   TOOLS
+----------------------------------------*/
+.tools-categories-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.tools-category-title {
+  color: var(--accent-teal);
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.tool-item {
+  background: rgba(0, 229, 212, 0.08);
+  padding: 30px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 229, 212, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tool-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+/* -------------------------------------
+   CONTACT & FOOTER
+----------------------------------------*/
+.contact-section {
+  min-height: 60vh;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+.contact-details-table {
+  margin: 0 auto 50px auto;
+  font-size: 1.2rem;
+}
+
+.contact-label {
+  color: var(--accent-teal);
+  padding-right: 15px;
+  text-align: right;
+}
+
+.contact-value a {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.contact-value a:hover {
+  color: var(--accent-cyan);
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #050608;
+  width: 100%;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--accent-teal);
+}
+
+.footer p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .filled-name,
+  .stroke-name-new {
+    font-size: 15vw;
+  }
+
+  .service-card,
+  .service-card:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-img,
+  .service-info {
+    width: 100%;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+  }
+}

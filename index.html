@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harshil Patel | Cinematic Scroll Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Harshil<span>Patel</span></div>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GSAP SCROLL CONTAINER -->
+  <div class="scroll-container">
+
+    <!-- HERO PINNED SECTION (Handles Hero -> Name Reveal -> About Me) -->
+    <section class="pin-hero">
+
+      <!-- SEQUENCE 1: Initial Full Image, Filled Name, Subtitle -->
+      <div class="seq-1" style="z-index: 10;">
+        <!-- BACKGROUND LAYER (Animates with seq-1) -->
+        <div class="hero-layer hero-bg-layer" style="z-index: 0;">
+          <img src="assets/images/harshil-lake.jpg" alt="Background" class="hero-bg-img"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <div class="hero-layer hero-text-layer" style="z-index: 1; align-items: flex-start; padding-top: 0;">
+          <div class="hero-text-content" style="width: 100%;">
+            <h1 class="filled-name" style="font-size: 11vw; letter-spacing: 2px; margin-top: -2vh;">HARSHIL PATEL</h1>
+          </div>
+        </div>
+        <div class="hero-layer hero-fg" style="z-index: 2;">
+          <img src="assets/images/harshil-cutout.png" alt="Harshil Patel" class="profile-cutout">
+        </div>
+      </div>
+
+      <!-- SEQUENCE 2: Stroke Name From Off-Screen -> Fills -> Subtitle Fades In -->
+      <div class="seq-2">
+        <div class="hero-text-content" style="width: 100%;">
+          <svg class="stroke-name-svg">
+            <text x="50%" y="50%" dy=".35em" text-anchor="middle" class="stroke-name-new">HARSHIL PATEL</text>
+          </svg>
+          <div class="seq-2-subtitle">
+            <p class="hero-subtitle">Creative Visual Storyteller</p>
+            <p class="hero-desc">Video Editing • Photography • Graphic Design • UI/UX</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEQUENCE 3: About Me Fades In -->
+      <div id="about" class="seq-3 about-content-pinned">
+        <div class="container" style="max-width: 900px;">
+          <h2 class="section-title" style="margin-bottom: 30px;">About <span>Me</span></h2>
+          <div class="about-content">
+            <p class="about-text">
+              I'm a passionate creative professional dedicated to bringing stories to life through visual media. With
+              expertise in video editing, photography, graphic design, and UI/UX, I combine technical skills with
+              artistic vision to deliver compelling content that resonates with audiences.
+            </p>
+            <p class="about-text">
+              My approach is collaborative and detail-oriented. Whether it's editing a corporate video, capturing a
+              special moment, designing brand materials, or crafting intuitive digital experiences, I'm committed to
+              exceeding expectations and creating work that makes an impact.
+            </p>
+            <div class="about-skills">
+              <div class="skill-group">
+                <h3>Video Production</h3>
+                <ul>
+                  <li>Video Editing</li>
+                  <li>Color Grading</li>
+                  <li>Motion Graphics</li>
+                </ul>
+              </div>
+              <div class="skill-group">
+                <h3>Visual Design</h3>
+                <ul>
+                  <li>Photography</li>
+                  <li>Graphic Design</li>
+                  <li>Branding</li>
+                </ul>
+              </div>
+              <div class="skill-group">
+                <h3>Digital Design</h3>
+                <ul>
+                  <li>UI/UX Design</li>
+                  <li>Web Design</li>
+                  <li>App Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SERVICES (CHARACTER STYLE REVEAL) -->
+    <section id="work" class="work-section panel">
+      <div class="container">
+        <h2 class="section-title">My <span>Services</span></h2>
+
+        <div class="service-showcase">
+          <!-- Video Editing -->
+          <div class="service-card char-reveal">
+            <div class="service-img"
+              style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800');">
+            </div>
+            <div class="service-info">
+              <h3>VIDEO EDITING</h3>
+              <p>Corporate, ads, short films & weddings</p>
+              <span class="coming-soon">Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Photography & Videography -->
+          <div class="service-card char-reveal">
+            <div class="service-img"
+              style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800');">
+            </div>
+            <div class="service-info">
+              <h3>PHOTOGRAPHY & VIDEOGRAPHY</h3>
+              <p>Events, portraits & brand stories</p>
+              <span class="coming-soon">Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Graphic Design -->
+          <div class="service-card char-reveal">
+            <div class="service-img"
+              style="background-image: url('https://images.unsplash.com/photo-1626785773579-c19280ab4448?auto=format&fit=crop&q=80&w=800');">
+            </div>
+            <div class="service-info">
+              <h3>GRAPHIC DESIGN</h3>
+              <p>Posters, branding & social media</p>
+              <span class="coming-soon">Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- UI/UX -->
+          <div class="service-card char-reveal">
+            <div class="service-img"
+              style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800');">
+            </div>
+            <div class="service-info">
+              <h3>UI / UX DESIGN</h3>
+              <p>App and website experience design</p>
+              <span class="coming-soon">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS SECTION -->
+    <section id="tools" class="tools-section panel">
+      <div class="container tools-container">
+        <h2 class="section-title">Tools &amp; <span>Software</span></h2>
+
+        <div class="tools-categories-wrapper">
+          <!-- Video Editing -->
+          <div class="tools-category stagger-tool">
+            <h3 class="tools-category-title">Video Editing</h3>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/452150/adobe-premiere.svg" alt="Premiere Pro">
+                <p>Premiere Pro</p>
+              </div>
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/452141/adobe-after-effects.svg" alt="After Effects">
+                <p>After Effects</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphic Design -->
+          <div class="tools-category stagger-tool">
+            <h3 class="tools-category-title">Graphic Design</h3>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/452147/adobe-illustrator.svg" alt="Illustrator">
+                <p>Illustrator</p>
+              </div>
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/452149/adobe-photoshop.svg" alt="Photoshop">
+                <p>Photoshop</p>
+              </div>
+              <div class="tool-item">
+                <img
+                  src="https://img.utdstc.com/icon/62f/136/62f1369d2e49fdcdf4989596eefad984413b9f39a8edcb775ceda2ad736e686c:200"
+                  alt="CorelDraw">
+                <p>CorelDraw</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- UI/UX -->
+          <div class="tools-category stagger-tool">
+            <h3 class="tools-category-title">UI/UX Design</h3>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/448222/figma.svg" alt="Figma">
+                <p>Figma</p>
+              </div>
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/452151/adobe-xd.svg" alt="Adobe XD">
+                <p>Adobe XD</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cameras -->
+          <div class="tools-category stagger-tool">
+            <h3 class="tools-category-title">Photography Cameras</h3>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <img src="https://www.svgrepo.com/show/303272/sony-2-logo.svg" alt="Sony"
+                  style="filter: brightness(0) invert(1);">
+                <p>Sony</p>
+              </div>
+              <div class="tool-item">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Nikon_Logo.svg/250px-Nikon_Logo.svg.png"
+                  alt="Nikon">
+                <p>Nikon</p>
+              </div>
+              <div class="tool-item">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Canon_logo.svg/2560px-Canon_logo.svg.png"
+                  alt="Canon" style="filter: brightness(0) invert(1);">
+                <p>Canon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" class="contact-section panel">
+      <div class="container">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <p class="contact-text" style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">
+          Feel free to reach out for projects, collaborations, or inquiries.
+        </p>
+        <table class="contact-details-table">
+          <tr>
+            <td class="contact-label">Email:</td>
+            <td class="contact-value"><a href="mailto:hmpatidar2161@email.com">hmpatidar2161@email.com</a></td>
+          </tr>
+          <tr>
+            <td class="contact-label">Phone:</td>
+            <td class="contact-value"><a href="tel:+917383838209">+91 73838 38209</a></td>
+          </tr>
+        </table>
+      </div>
+
+      <footer class="footer">
+        <div class="social-icons">
+          <a href="https://wa.me/917383838209"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://instagram.com/ihmpatidar"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/harshil-patel-337369223/"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <p>© 2026 Harshil Patel • All Rights Reserved</p>
+      </footer>
+    </section>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
