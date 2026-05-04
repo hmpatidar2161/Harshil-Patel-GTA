@@ -20,11 +20,19 @@
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">Harshil<span>Patel</span></div>
-      <nav class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#tools">Tools</a>
-        <a href="#contact">Contact</a>
+
+      <!-- Hamburger Button (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#tools" class="nav-link">Tools</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
@@ -45,7 +53,7 @@
 
         <div class="hero-layer hero-text-layer" style="z-index: 1; align-items: flex-start; padding-top: 0;">
           <div class="hero-text-content" style="width: 100%;">
-            <h1 class="filled-name" style="font-size: 11vw; letter-spacing: 2px; margin-top: -2vh;">HARSHIL PATEL</h1>
+            <h1 class="filled-name" style="margin-top: -2vh;">HARSHIL PATEL</h1>
           </div>
         </div>
         <div class="hero-layer hero-fg" style="z-index: 2;">
@@ -258,26 +266,28 @@
     <section id="contact" class="contact-section panel">
       <div class="container">
         <h2 class="section-title">Get In <span>Touch</span></h2>
-        <p class="contact-text" style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">
+        <p class="contact-text">
           Feel free to reach out for projects, collaborations, or inquiries.
         </p>
-        <table class="contact-details-table">
-          <tr>
-            <td class="contact-label">Email:</td>
-            <td class="contact-value"><a href="mailto:hmpatidar2161@email.com">hmpatidar2161@email.com</a></td>
-          </tr>
-          <tr>
-            <td class="contact-label">Phone:</td>
-            <td class="contact-value"><a href="tel:+917383838209">+91 73838 38209</a></td>
-          </tr>
-        </table>
+
+        <!-- Changed from table to div-based layout for better mobile -->
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-label">Email:</span>
+            <span class="contact-value"><a href="mailto:hmpatidar2161@email.com">hmpatidar2161@email.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Phone:</span>
+            <span class="contact-value"><a href="tel:+917383838209">+91 73838 38209</a></span>
+          </div>
+        </div>
       </div>
 
       <footer class="footer">
         <div class="social-icons">
-          <a href="https://wa.me/917383838209"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="https://instagram.com/ihmpatidar"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://linkedin.com/in/harshil-patel-337369223/"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://wa.me/917383838209" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://instagram.com/ihmpatidar" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/harshil-patel-337369223/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         </div>
         <p>© 2026 Harshil Patel • All Rights Reserved</p>
       </footer>
@@ -288,6 +298,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Mobile Hamburger Menu Script -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
 </body>
 
 </html>
