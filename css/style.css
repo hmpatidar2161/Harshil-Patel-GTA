@@ -30,13 +30,15 @@ a {
   text-decoration: none;
 }
 
-/* NAVBAR */
+/* =====================================
+   NAVBAR
+====================================== */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 30px;
-  background: rgba(11, 13, 16, 0.8);
+  padding: 16px 24px;
+  background: rgba(11, 13, 16, 0.9);
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
@@ -59,6 +61,11 @@ a {
   color: var(--accent-gold);
 }
 
+.nav-links {
+  display: flex;
+  gap: 0;
+}
+
 .nav-links a {
   margin-left: 25px;
   font-size: 0.9rem;
@@ -69,7 +76,43 @@ a {
   color: var(--accent-teal);
 }
 
-/* GSAP SCROLL LAYOUT */
+/* --- Hamburger Button --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--text-light);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate hamburger → X */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =====================================
+   GSAP SCROLL LAYOUT
+====================================== */
 .scroll-container {
   position: relative;
   width: 100%;
@@ -103,9 +146,9 @@ a {
   color: var(--accent-gold);
 }
 
-/* -------------------------------------
+/* =====================================
    HERO PINNED SEQUENCES
-----------------------------------------*/
+====================================== */
 .pin-hero {
   position: relative;
   height: 100vh;
@@ -128,7 +171,6 @@ a {
   flex-direction: column;
 }
 
-/* --- SEQ 1: Initial full image, filled name, text --- */
 .seq-1 {
   z-index: 10;
   transform-origin: center center;
@@ -156,6 +198,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 16px;
 }
 
 .filled-name {
@@ -168,7 +211,6 @@ a {
   white-space: nowrap;
   letter-spacing: 4px;
   color: var(--accent-gold);
-  /* FILLED INITIAL */
 }
 
 .seq-1-subtitle {
@@ -192,7 +234,6 @@ a {
 
 .hero-fg {
   z-index: 2;
-  /* Removed align-items: flex-end to allow full height */
 }
 
 .profile-cutout {
@@ -201,18 +242,16 @@ a {
   object-fit: cover;
 }
 
-/* --- SEQ 2: New stroke name from offscreen, fills, text fades in --- */
+/* --- SEQ 2 --- */
 .seq-2 {
   z-index: 20;
   opacity: 0;
-  /* Hidden initially, GSAP brings it in */
   pointer-events: none;
 }
 
 .stroke-name-svg {
   width: 100vw;
   height: 12vw;
-  /* Accommodate the 10vw font size */
   overflow: visible;
 }
 
@@ -222,10 +261,8 @@ a {
   font-weight: 700;
   letter-spacing: 4px;
   fill: var(--dark-bg);
-  /* This perfectly hides the overlapping inner strokes! */
   stroke: var(--accent-gold);
   stroke-width: 4px;
-  /* With paint-order, 4px gives a clean 2px outward stroke */
   stroke-linejoin: round;
   paint-order: stroke fill;
   filter: drop-shadow(0 0 1px rgba(212, 175, 55, 0.3));
@@ -235,15 +272,15 @@ a {
   margin-top: 20px;
   text-align: center;
   opacity: 0;
-  /* Hidden initially */
+  padding: 0 16px;
 }
 
-/* --- SEQ 3: About Me Pinned --- */
+/* --- SEQ 3: About Me --- */
 .seq-3 {
   z-index: 30;
   opacity: 0;
-  /* GSAP fades this in */
   background: var(--dark-bg);
+  overflow-y: auto;
 }
 
 .about-content-pinned {
@@ -298,10 +335,9 @@ a {
   margin-right: 8px;
 }
 
-
-/* -------------------------------------
+/* =====================================
    SERVICES
-----------------------------------------*/
+====================================== */
 .service-showcase {
   display: flex;
   flex-direction: column;
@@ -328,6 +364,7 @@ a {
   background-size: cover;
   background-position: center;
   border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .service-info {
@@ -358,9 +395,9 @@ a {
   font-weight: bold;
 }
 
-/* -------------------------------------
+/* =====================================
    TOOLS
-----------------------------------------*/
+====================================== */
 .tools-categories-wrapper {
   display: flex;
   flex-direction: column;
@@ -399,29 +436,51 @@ a {
   object-fit: contain;
 }
 
-/* -------------------------------------
+/* =====================================
    CONTACT & FOOTER
-----------------------------------------*/
+====================================== */
 .contact-section {
   min-height: 60vh;
   justify-content: space-between;
   padding-bottom: 0;
 }
 
-.contact-details-table {
-  margin: 0 auto 50px auto;
+.contact-text {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  padding: 0 16px;
+}
+
+/* Replaced table with div layout */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .contact-label {
   color: var(--accent-teal);
-  padding-right: 15px;
-  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .contact-value a {
   color: #fff;
   transition: color 0.3s;
+  word-break: break-all;
 }
 
 .contact-value a:hover {
@@ -430,10 +489,17 @@ a {
 
 .footer {
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   background: #050608;
   width: 100%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .social-icons a {
@@ -453,30 +519,255 @@ a {
   color: #555;
 }
 
-/* Responsive */
+/* =====================================
+   RESPONSIVE — TABLET (max 768px)
+====================================== */
 @media (max-width: 768px) {
 
-  .filled-name,
+  /* --- Navbar → Hamburger --- */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 280px;
+    height: 100vh;
+    background: rgba(11, 13, 16, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 30px 40px;
+    gap: 10px;
+    transition: right 0.35s ease;
+    border-left: 1px solid rgba(255,255,255,0.06);
+    z-index: 1050;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    margin-left: 0;
+    font-size: 1.2rem;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* --- Section title --- */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  /* --- Panel padding --- */
+  .panel {
+    padding: 80px 16px 60px;
+  }
+
+  /* --- Hero name --- */
+  .filled-name {
+    font-size: 13vw;
+    letter-spacing: 2px;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .stroke-name-svg {
+    width: 95vw;
+    height: 18vw;
+  }
+
   .stroke-name-new {
-    font-size: 15vw;
+    font-size: 13vw;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-desc {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+
+  /* --- About skills: single column on small screens --- */
+  .about-skills {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .skill-group {
+    padding: 20px;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+
+  /* --- Services: stack vertically --- */
+  .service-showcase {
+    gap: 40px;
   }
 
   .service-card,
   .service-card:nth-child(even) {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
+    padding: 16px;
   }
 
-  .service-img,
+  .service-img {
+    width: 100%;
+    height: 220px;
+  }
+
   .service-info {
     width: 100%;
+    padding: 10px 0;
   }
 
-  .hero-subtitle {
+  .service-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .service-info p {
+    font-size: 0.95rem;
+  }
+
+  /* --- Tools: 2-column grid --- */
+  .tools-categories-wrapper {
+    gap: 40px;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .tool-item {
+    padding: 20px 12px;
+  }
+
+  .tool-item img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+  }
+
+  .tools-category-title {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  /* --- Contact --- */
+  .contact-row {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .contact-label {
+    font-size: 0.85rem;
+  }
+
+  .social-icons a {
+    font-size: 1.3rem;
+  }
+}
+
+/* =====================================
+   RESPONSIVE — MOBILE (max 480px)
+====================================== */
+@media (max-width: 480px) {
+
+  .logo {
     font-size: 1.2rem;
   }
 
+  .navbar {
+    padding: 14px 16px;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .filled-name {
+    font-size: 14vw;
+  }
+
+  .stroke-name-new {
+    font-size: 14vw;
+  }
+
+  .stroke-name-svg {
+    height: 20vw;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
   .hero-desc {
+    font-size: 0.78rem;
+  }
+
+  /* Services: full width image, tighter */
+  .service-img {
+    height: 180px;
+  }
+
+  .service-info h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Tools: still 2 cols but smaller */
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .tool-item {
+    padding: 16px 8px;
+  }
+
+  .tool-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tool-item p {
+    font-size: 0.78rem;
+  }
+
+  /* About skills: full width cards */
+  .skill-group {
+    padding: 16px;
+  }
+
+  .about-text {
     font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 24px 16px;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
   }
 }
