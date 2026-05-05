@@ -4,45 +4,50 @@ document.addEventListener("DOMContentLoaded", (event) => {
   /* --------------------------------------------------------
      1. HERO PINNED SEQUENCES
      -------------------------------------------------------- */
-  // We make the pinned scroll very long so all sequences have time to play
+  // INITIAL STATES
+  gsap.set(".seq-2", { scale: 5, opacity: 0 }); // Seq 2 starts massive (out of screen) and hidden
+  gsap.set(".seq-3", { opacity: 0, y: 100 }); // About me hidden and pushed down initially
+
   let heroTl = gsap.timeline({
     scrollTrigger: {
       trigger: ".pin-hero",
       start: "top top",
-      end: "+=5000", // 5000px of scrolling for the whole intro
+      end: "+=5000",
       pin: true,
       scrub: 1,
     }
   });
 
-  // INITIAL STATES
-  gsap.set(".seq-2", { scale: 5, opacity: 0 }); // Seq 2 starts massive (out of screen) and hidden
-  gsap.set(".seq-3", { opacity: 0 }); // About me hidden initially
-
   heroTl
     // PHASE 1: Zoom out the initial view and fade it away
     .to(".seq-1", { scale: 0.5, opacity: 0, duration: 2 })
 
-    // PHASE 2: While Seq 1 fades out, Seq 2 (Stroke Name) flies in from off-screen
+    // PHASE 2: While Seq 1 fades out, Seq 2 flies in from off-screen
     .to(".seq-2", { scale: 1, opacity: 1, duration: 2 }, "-=1")
+    .to(".seq-2-subtitle", { opacity: 1, duration: 2 }, "<")
 
     // PHASE 3: The stroke name fills with solid gold color
     .to(".stroke-name-new", { fill: "#D4AF37", duration: 1 })
 
-    // PHASE 4: The subtitle text fades in under the filled name
-    .to(".seq-2-subtitle", { opacity: 1, duration: 1 })
+    // PHASE 4: Crossfade and slide up Seq 2 out and Seq 3 (About Me) in seamlessly
+    .to(".seq-2", { opacity: 0, y: -100, duration: 1.5 }, "+=0.5") // Slide up and fade out
+    .to(".seq-3", { opacity: 1, y: 0, duration: 1.5 }, "<")     // Slide up and fade in AT THE SAME TIME
 
-    // Hold so user can read it
-    .to({}, { duration: 1 })
-
-    // PHASE 5: Fade out the Name + Subtitle
-    .to(".seq-2", { opacity: 0, duration: 1 })
-
-    // PHASE 6: Fade in the About Me section (all while still pinned)
-    .to(".seq-3", { opacity: 1, duration: 1.5 })
-
-    // Hold About Me so user can read it before the pin ends and standard scrolling starts
+    // PHASE 5: Hold About Me so user can read it
     .to({}, { duration: 2 });
+
+  // AUTO-PLAY MAGIC: Scroll the page automatically to the filled name state if at top
+  setTimeout(() => {
+    if (window.scrollY === 0) {
+      let dummy = { y: 0 };
+      gsap.to(dummy, {
+        y: 2500, // Exactly halfway through the 5000px scrub where the name fills with gold
+        duration: 2.5,
+        ease: "power2.inOut",
+        onUpdate: () => window.scrollTo(0, dummy.y)
+      });
+    }
+  }, 300);
 
 
   /* --------------------------------------------------------
