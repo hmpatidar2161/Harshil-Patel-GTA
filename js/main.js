@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger);
 
   /* --------------------------------------------------------
-     1. HERO PINNED SEQUENCES
+    1. HERO PINNED SEQUENCES
      -------------------------------------------------------- */
   // INITIAL STATES
   gsap.set(".seq-2", { scale: 5, opacity: 0 }); // Seq 2 starts massive (out of screen) and hidden
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
   /* --------------------------------------------------------
-     2. SERVICES (CHARACTER STYLE REVEAL)
+    2. SERVICES (CHARACTER STYLE REVEAL)
      -------------------------------------------------------- */
   const serviceCards = gsap.utils.toArray(".char-reveal");
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
   /* --------------------------------------------------------
-     3. TOOLS STAGGER REVEAL
+    3. TOOLS STAGGER REVEAL
      -------------------------------------------------------- */
   const toolCategories = gsap.utils.toArray(".stagger-tool");
 
