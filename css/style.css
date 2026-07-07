@@ -598,23 +598,25 @@ CONTACT & FOOTER
 }
 
 .contact-row {
-  display: flex;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;
-  text-align: center;
+  width: max-content;
+  text-align: left;
 }
 
 .contact-label {
   color: var(--accent-teal);
   padding-right: 0;
-  text-align: center;
+  text-align: left;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .contact-value {
-  text-align: center;
+  text-align: left;
 }
 
 .contact-value a {
@@ -795,8 +797,10 @@ CONTACT & FOOTER
   }
 
   .contact-row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 4px;
+    width: 100%;
+    justify-items: center;
   }
 
   .contact-label,
