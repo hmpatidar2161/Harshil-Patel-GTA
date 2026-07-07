@@ -842,30 +842,33 @@ CONTACT & FOOTER
   }
 
   .seq-1-text-layer {
-    padding-top: 10vh;
-    /* Move text to the top */
+    padding-top: 8vh;
+    /* Move text up a bit on mobile */
   }
 
   .split-name {
-    font-size: 16vw !important;
-    /* Larger since they are stacked */
+    font-size: clamp(3.2rem, 12vw, 5.5rem) !important;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    height: auto;
-    gap: 0;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .last-name-group {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    /* Center subtitle under PATEL on mobile */
+    width: 100%;
   }
 
   .subtitle-text {
-    font-size: 5.5vw;
-    /* Scale up for readability on mobile */
+    font-size: clamp(1rem, 4vw, 1.4rem);
     margin-top: 1vw;
     letter-spacing: 2px;
+    white-space: normal;
   }
 
   .split-name .first-name,
@@ -874,12 +877,15 @@ CONTACT & FOOTER
     right: auto;
     left: auto;
     margin: 0;
+    white-space: normal;
+    width: 100%;
   }
 
   .filled-name,
   .stroke-name-new {
-    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    font-size: clamp(3rem, 12vw, 5rem);
     letter-spacing: 1px;
+    white-space: normal;
   }
 
   .service-card,
