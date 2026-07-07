@@ -706,7 +706,7 @@ CONTACT & FOOTER
   .about-content-pinned .skill-group:nth-child(3) {
     grid-column: 1 / -1;
     width: calc(50% - 5px);
-    justify-self: center;
+    justify-self: start;
   }
 
   .about-content-pinned .skill-group {
