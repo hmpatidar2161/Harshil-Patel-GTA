@@ -75,12 +75,20 @@ a {
   justify-content: center;
 }
 
+.brand {
+  perspective: 1000px;
+}
+
 .brand-logo {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  animation: brand-rotate 4s linear infinite;
+  animation: brand-rotate 3s linear infinite;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
 }
 
 .hamburger {
@@ -682,6 +690,11 @@ CONTACT & FOOTER
   transform-style: preserve-3d;
   flex-shrink: 0;
   margin-top: 10px;
+}
+.footer-brand-logo {
+  transform-origin: center center;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
 }
 
 
