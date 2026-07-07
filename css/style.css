@@ -406,8 +406,8 @@ a {
 
 .about-skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
   margin-top: 50px;
 }
 
@@ -433,15 +433,9 @@ a {
   padding: 8px 0;
 }
 
-.skill-group li:before {
-  content: "→ ";
-  color: var(--accent-gold);
-  margin-right: 8px;
-}
-
 
 /* -------------------------------------
-   SERVICES
+  SERVICES
 ----------------------------------------*/
 .service-showcase {
   display: flex;
@@ -637,6 +631,7 @@ CONTACT & FOOTER
 
 .footer-brand .logo span {
   color: var(--accent-gold);
+  margin-left: 15px;
 }
 
 .footer .social-icons {

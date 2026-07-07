@@ -944,6 +944,21 @@ a {
   color: inherit;
 }
 
+.service-work-card {
+  height: 280px;
+  background: #11161d;
+}
+
+.service-work-card .overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.18));
+}
+
+.service-work-card .coming-soon {
+  align-self: flex-start;
+  margin-top: 14px;
+  position: static;
+}
+
 .work-item a:hover,
 .work-item a:focus,
 .work-item a:visited {
