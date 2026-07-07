@@ -12,43 +12,43 @@ document.addEventListener("DOMContentLoaded", (event) => {
     scrollTrigger: {
       trigger: ".pin-hero",
       start: "top top",
-      end: () => `+=${window.matchMedia("(max-width: 768px)").matches ? 1800 : 2800}`,
+      end: () => `+=${window.matchMedia("(max-width: 768px)").matches ? 1200 : 1800}`,
       pin: true,
-      scrub: 1,
+      scrub: 0.5,
       invalidateOnRefresh: true,
     }
   });
 
   heroTl
     // PHASE 1: Zoom out the initial view and fade it away
-    .to(".seq-1", { scale: 0.5, opacity: 0, duration: 2 })
+    .to(".seq-1", { scale: 0.5, opacity: 0, duration: 1.2, ease: "power1.out" })
 
     // PHASE 2: While Seq 1 fades out, Seq 2 flies in from off-screen
-    .to(".seq-2", { scale: 1, opacity: 1, duration: 2 }, "-=1")
-    .to(".seq-2-subtitle", { opacity: 1, duration: 2 }, "<")
+    .to(".seq-2", { scale: 1, opacity: 1, duration: 1.2, ease: "power1.out" }, "-=0.8")
+    .to(".seq-2-subtitle", { opacity: 1, duration: 1.2, ease: "power1.out" }, "<")
 
     // PHASE 3: The stroke name fills with solid gold color
-    .to(".stroke-name-new", { fill: "#D4AF37", duration: 1 })
+    .to(".stroke-name-new", { fill: "#D4AF37", duration: 0.7, ease: "power1.out" })
 
     // PHASE 4: Crossfade and slide up Seq 2 out and Seq 3 (About Me) in seamlessly
-    .to(".seq-2", { opacity: 0, y: -100, duration: 1.5 }, "+=0.5") // Slide up and fade out
-    .to(".seq-3", { opacity: 1, y: 0, duration: 1.5 }, "<")     // Slide up and fade in AT THE SAME TIME
+    .to(".seq-2", { opacity: 0, y: -80, duration: 1.1, ease: "power1.out" }, "+=0.2")
+    .to(".seq-3", { opacity: 1, y: 0, duration: 1.1, ease: "power1.out" }, "<")
 
     // Keep a short settling beat, then release directly into Services.
-    .to({}, { duration: 0.2 });
+    .to({}, { duration: 0.15 });
 
   // AUTO-PLAY MAGIC: Scroll the page automatically to the filled name state if at top
   setTimeout(() => {
     if (window.scrollY === 0) {
       let dummy = { y: 0 };
       gsap.to(dummy, {
-        y: window.matchMedia("(max-width: 768px)").matches ? 900 : 1400,
-        duration: 2.5,
+        y: window.matchMedia("(max-width: 768px)").matches ? 800 : 1200,
+        duration: 1.4,
         ease: "power2.inOut",
         onUpdate: () => window.scrollTo(0, dummy.y)
       });
     }
-  }, 300);
+  }, 200);
 
 
   /* --------------------------------------------------------
