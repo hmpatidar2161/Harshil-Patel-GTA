@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     scrollTrigger: {
       trigger: ".pin-hero",
       start: "top top",
-      end: "+=5000",
+      end: () => `+=${window.matchMedia("(max-width: 768px)").matches ? 1800 : 2800}`,
       pin: true,
       scrub: 1,
+      invalidateOnRefresh: true,
     }
   });
 
@@ -33,15 +34,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .to(".seq-2", { opacity: 0, y: -100, duration: 1.5 }, "+=0.5") // Slide up and fade out
     .to(".seq-3", { opacity: 1, y: 0, duration: 1.5 }, "<")     // Slide up and fade in AT THE SAME TIME
 
-    // PHASE 5: Hold About Me so user can read it
-    .to({}, { duration: 2 });
+    // Keep a short settling beat, then release directly into Services.
+    .to({}, { duration: 0.2 });
 
   // AUTO-PLAY MAGIC: Scroll the page automatically to the filled name state if at top
   setTimeout(() => {
     if (window.scrollY === 0) {
       let dummy = { y: 0 };
       gsap.to(dummy, {
-        y: 2500, // Exactly halfway through the 5000px scrub where the name fills with gold
+        y: window.matchMedia("(max-width: 768px)").matches ? 900 : 1400,
         duration: 2.5,
         ease: "power2.inOut",
         onUpdate: () => window.scrollTo(0, dummy.y)
