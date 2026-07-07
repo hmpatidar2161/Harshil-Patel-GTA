@@ -18,11 +18,26 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--dark-bg);
   color: var(--text-light);
   overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -203,7 +218,7 @@ a {
 }
 
 /* -------------------------------------
-   HERO PINNED SEQUENCES
+  HERO PINNED SEQUENCES
 ----------------------------------------*/
 .pin-hero {
   position: relative;
