@@ -21,6 +21,7 @@
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -34,6 +35,8 @@ body {
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 body::-webkit-scrollbar {
@@ -203,7 +206,8 @@ a {
 .container {
   max-width: 1201px;
   margin: 0 auto;
-  width: 100%;
+  width: min(100%, 1201px);
+  padding: 0 20px;
 }
 
 .section-title {
@@ -274,7 +278,7 @@ a {
 
 .filled-name {
   font-family: var(--font-heading);
-  font-size: 10vw;
+  font-size: clamp(2.8rem, 10vw, 6rem);
   font-weight: 700;
   margin: 0;
   line-height: 1;
@@ -282,6 +286,7 @@ a {
   white-space: nowrap;
   letter-spacing: 4px;
   color: var(--accent-gold);
+  max-width: 100%;
 }
 
 .seq-1-text-layer {
@@ -291,7 +296,7 @@ a {
 }
 
 .split-name {
-  font-size: 11vw;
+  font-size: clamp(2.4rem, 8vw, 5rem);
   letter-spacing: 2px;
   margin-top: 0;
   display: flex;
@@ -299,6 +304,7 @@ a {
   align-items: flex-start;
   gap: 3vw;
   width: 100%;
+  max-width: 100%;
 }
 
 .last-name-group {
@@ -366,15 +372,16 @@ a {
 }
 
 .stroke-name-svg {
-  width: 100vw;
-  height: 12vw;
-  /* Accommodate the 10vw font size */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 70px;
   overflow: visible;
 }
 
 .stroke-name-new {
   font-family: var(--font-heading);
-  font-size: 10vw;
+  font-size: clamp(2.4rem, 9vw, 5rem);
   font-weight: 700;
   letter-spacing: 4px;
   fill: var(--dark-bg);
@@ -709,6 +716,14 @@ CONTACT & FOOTER
 /* Responsive */
 @media (max-width: 768px) {
 
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
   .pin-hero {
     height: 100dvh;
     min-height: 100dvh;
@@ -728,8 +743,13 @@ CONTACT & FOOTER
     width: 100%;
   }
 
+  .section-title {
+    font-size: clamp(2rem, 7vw, 2.7rem);
+    margin-bottom: 24px;
+  }
+
   .about-content-pinned .section-title {
-    font-size: 2.3rem;
+    font-size: clamp(2rem, 7vw, 2.7rem);
     margin-bottom: 14px !important;
   }
 
@@ -858,8 +878,8 @@ CONTACT & FOOTER
 
   .filled-name,
   .stroke-name-new {
-    font-size: 11vw;
-    /* Smaller so it fits completely */
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    letter-spacing: 1px;
   }
 
   .service-card,
@@ -874,11 +894,15 @@ CONTACT & FOOTER
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .hero-desc {
     font-size: 0.9rem;
+  }
+
+  .seq-2-subtitle {
+    padding: 0 16px;
   }
 }
 
