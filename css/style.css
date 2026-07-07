@@ -667,51 +667,65 @@ CONTACT & FOOTER
 /* Responsive */
 @media (max-width: 768px) {
 
+  .pin-hero {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
   .about-content-pinned {
-    min-height: 100%;
-    padding: 72px 16px 18px;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 68px 18px 20px;
     overflow-y: auto;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .about-content-pinned .container {
-    margin: auto;
+    margin: 0 auto;
   }
 
   .about-content-pinned .section-title {
-    font-size: 2rem;
-    margin-bottom: 14px !important;
+    font-size: 2.5rem;
+    margin-bottom: 18px !important;
   }
 
   .about-content-pinned .about-text {
-    font-size: 0.86rem;
-    line-height: 1.5;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    text-align: left;
   }
 
   .about-content-pinned .about-skills {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 7px;
-    margin-top: 16px;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 18px;
   }
 
   .about-content-pinned .skill-group {
     min-width: 0;
-    padding: 10px 7px;
-    border-left-width: 2px;
-    border-radius: 6px;
+    padding: 12px 14px;
+    border-left-width: 3px;
+    border-radius: 8px;
   }
 
   .about-content-pinned .skill-group h3 {
-    font-size: 0.72rem;
+    font-size: 0.95rem;
     line-height: 1.3;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .about-content-pinned .skill-group ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .about-content-pinned .skill-group li {
-    padding: 3px 0;
-    font-size: 0.65rem;
-    line-height: 1.25;
+    padding: 2px 0;
+    font-size: 0.78rem;
+    line-height: 1.35;
   }
 
   .footer-content {
